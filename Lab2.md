@@ -19,7 +19,7 @@ Issue#11
 # Copiamos /etc/nginx/sites-availables/test.conf en /etc/nginx/sites-availables/opencart.conf y procedemos a modificar:
 ### Cambiamos el valor de root a /srv/www/opencart/html
 ### Agregamos index.php al parametro index
-### Descomentamos el bloque de php (el de nginx) y modificamos el valor de fast_cgi por unix:/var/run/php-fpm/php-fpm.sock
+### Descomentamos el bloque de php (el de nginx) y modificamos el valor de fast_cgi por unix:/var/run/php-fpm/php-fpm.sock. También cambiamos el valor de "fastcgi_param SCRIPT_FILENAME" por "$document_root$fastcgi_script_name"
 # Creamos enlace simbólico a opencart.conf y lo guardamos en /etc/nginx/sites-enabled/
 # Borramos el enlace a test.conf en la misma carpeta
 # Movemos /srv/www/test a /srv/www/opencart
@@ -47,5 +47,20 @@ Issue#13
 # Movemos los contenidos de opencart-master/upload/ a /srv/www/opencart/html/
 # Borramos master.zip y los demás archivos de opencart-master
 # Arreglamos los contextos de selinux con "/sbin/restorecon -vR /srv/www/opencart/html/* "
-# Le damos permisos de escritura a config.php y admin/config.php
-# Al ingresar a la página, me debería aparecer el instalador, pero no aparece. lo dejo pendiente. LO único que aparece es un mensaje diciendo "No input file specified. "
+# Cambiamos los contextos de selinux para los siguientes archivos y directorios:
+### /srv/www/opencart/html/config.php
+### /srv/www/opencart/html/admin/config.php
+### /srv/www/opencart/html/image
+### /srv/www/opencart/html/image/cache
+### /srv/www/opencart/html/image/catalog
+### /srv/www/opencart/html/system/storage/cache
+### /srv/www/opencart/html/system/storage/logs
+### /srv/www/opencart/html/system/storage/download
+### /srv/www/opencart/html/system/storage/upload
+### /srv/www/opencart/html/system/storage/modification
+# Los cambiamos con "semanage fcontext -a -t httpd_sys_rw_content_t PATH" y luego "restorecon -v PATH"
+# Estoy seguro que este arreglo de selinux es porque puse mal los owner y los group en algún lado
+# Instalamos la extensiones php71u-json, php71u-gd y php71u-mysqlnd
+# Vamos a la página grupo09.mosorio.me y nos encontramos con el instalador de opencart. Le damos CONTINUE
+# Revisamos que todos los tickets estén en verde y le damos a CONTINUE
+# Rellenamos los datos de acceso a la base de datos, como el username (ocuser) y el nombre de la base de datos (opencart). Creamos un usuario admin y le damos una contraseña y un correo. Luego le damos a CONTINUE.
