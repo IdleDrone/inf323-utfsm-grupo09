@@ -42,25 +42,14 @@ Issue#13
 
 # Instalamos unzip y wget con yum
 # Descargamos un zip con los archivos de opencart desde https://github.com/opencart/opencart/archive/master.zip usando wget, y lo guardamos en /srv/www/opencart/html/
-# Abrimos el zip con el comando " unzip master.zip 'opencart-master/upload/* ". Luego copiamos el archivo opencart-master/upload/config-dist.php a opencart-master/upload7config.php y el archivo opencart-master/upload/admin/config-dist.php por opencart-master/upload/admin/config.php
+# Abrimos el zip con el comando " unzip master.zip 'opencart-master/upload/* ". Luego copiamos el archivo opencart-master/upload/config-dist.php a opencart-master/upload/config.php y el archivo opencart-master/upload/admin/config-dist.php por opencart-master/upload/admin/config.php
 # Cambiamos el user y group de todos los archivos en opencart-master/upload a nginx:nginx usando chown
 # Movemos los contenidos de opencart-master/upload/ a /srv/www/opencart/html/
 # Borramos master.zip y los demás archivos de opencart-master
 # Arreglamos los contextos de selinux con "/sbin/restorecon -vR /srv/www/opencart/html/* "
-# Cambiamos los contextos de selinux para los siguientes archivos y directorios:
-### /srv/www/opencart/html/config.php
-### /srv/www/opencart/html/admin/config.php
-### /srv/www/opencart/html/image
-### /srv/www/opencart/html/image/cache
-### /srv/www/opencart/html/image/catalog
-### /srv/www/opencart/html/system/storage/cache
-### /srv/www/opencart/html/system/storage/logs
-### /srv/www/opencart/html/system/storage/download
-### /srv/www/opencart/html/system/storage/upload
-### /srv/www/opencart/html/system/storage/modification
-# Los cambiamos con "semanage fcontext -a -t httpd_sys_rw_content_t PATH" y luego "restorecon -v PATH"
-# Estoy seguro que este arreglo de selinux es porque puse mal los owner y los group en algún lado
+# Ejecutamos "setsebool -P httpd_unified 1" y "setsebool -P httpd_can_network_connect_db 1" para cambiar unos booleano de selinux que permitirán a php acceder a los datos
 # Instalamos la extensiones php71u-json, php71u-gd y php71u-mysqlnd
 # Vamos a la página grupo09.mosorio.me y nos encontramos con el instalador de opencart. Le damos CONTINUE
 # Revisamos que todos los tickets estén en verde y le damos a CONTINUE
 # Rellenamos los datos de acceso a la base de datos, como el username (ocuser) y el nombre de la base de datos (opencart). Creamos un usuario admin y le damos una contraseña y un correo. Luego le damos a CONTINUE.
+# Borramos la carpeta /srv/www/opencart/html/install y todos los archivos y subcarpetas dentro
