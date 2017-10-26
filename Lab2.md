@@ -53,3 +53,11 @@ Issue#13
 # Revisamos que todos los tickets estén en verde y le damos a CONTINUE
 # Rellenamos los datos de acceso a la base de datos, como el username (ocuser) y el nombre de la base de datos (opencart). Creamos un usuario admin y le damos una contraseña y un correo. Luego le damos a CONTINUE.
 # Borramos la carpeta /srv/www/opencart/html/install y todos los archivos y subcarpetas dentro
+
+Issue#14
+
+# Instalamos ansible via "yum -y install ansible"
+# Modificamos /etc/ansible/hosts y agregamos las ips de ambas máquinas
+# Creamos las llaves ssh de maquina1 y maquina2, y las agregamos al authorized_keys de cada una
+# Creamos la carpeta /etc/ansible/group_vars y el archivo /etc/ansible/group_vars/servers
+# Le decimos a ansible que siempre intente conectarse como usuario root, al modificar el archivo /etc/ansible/group_vars/servers
