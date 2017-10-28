@@ -54,6 +54,12 @@ Issue#13
 # Rellenamos los datos de acceso a la base de datos, como el username (ocuser) y el nombre de la base de datos (opencart). Creamos un usuario admin y le damos una contraseña y un correo. Luego le damos a CONTINUE.
 # Borramos la carpeta /srv/www/opencart/html/install y todos los archivos y subcarpetas dentro
 
+Issue#17
+
+# Creamos la carpeta /etc/nginx/ssl y guardamos ahí los certificados descargados desde moodle
+# Modificamos /etc/nginx/sites-available/opencart.conf y le agregamos las direcciones de los certificados
+# Reiniciamos nginx
+
 Issue#14
 
 # Instalamos ansible via "yum -y install ansible"
@@ -61,10 +67,13 @@ Issue#14
 # Creamos las llaves ssh de maquina1 y maquina2, y las agregamos al authorized_keys de cada una
 # Creamos la carpeta /etc/ansible/group_vars y el archivo /etc/ansible/group_vars/servers
 # Le decimos a ansible que siempre intente conectarse como usuario root, al modificar el archivo /etc/ansible/group_vars/servers
-# Ejecutamos "mkdir /root/ansible" para crear la carpeta donde guardaremos los playbooks y "mkdir /root/ansible/files" para crear la carpeta donde guardaremos los archivos de configuración
+# Ejecutamos "mkdir /root/ansible" para crear la carpeta donde guardaremos los playbooks, "mkdir /root/ansible/files" para crear la carpeta donde guardaremos los archivos de configuración y "mkdir /root/ansible/ssl" para crear la carpeta donde guardaremos los certificados
 # Copiamos los archivos "/etc/php.ini", "/etc/php-fpm.d/www.conf", "/etc/nginx/nginx.conf" y "/etc/nginx/sites-available/opencart.conf", y los pegamos en "/root/ansible/files/"
+# Copiamos todos los certificados en "/etc/nginx/ssl" y los pegamos en "/root/ansible/ssl"
 # Creamos los playbooks y los ejecutamos con ansible-playbooks nombre-playbook
 
 Issue#15
 
 # Volvemos a hacer las tareas del lab1 en la nueva máquina, exceptuando lo relacionado a nginx
+# Ejecutamos los playbooks y cargamos las configuraciones correctas de php, nginx y tls
+# Abrimos el puerto tcp 3306 en la zona public de ambas máquinas con el comando "firewall-cmd --zone=public --add-service=mysql --permanent"

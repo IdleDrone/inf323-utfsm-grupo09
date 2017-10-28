@@ -1,0 +1,43 @@
+---
+- hosts: web
+  become: true
+  tasks:
+    - name: Create directory /etc/nginx/ssl
+      file:
+        path: /etc/nginx/ssl
+        state: directory
+        owner: root
+        group: root
+        mode: 0755
+    - name: Import cert.pem into /etc/nginx/ssl
+      copy:
+        src: ssl/cert.pem
+        dest: /etc/nginx/ssl/cert.pem
+        owner: root
+        group: root
+        mode: 0644
+    - name: Import chain.pem into /etc/nginx/ssl
+      copy:
+        src: ssl/chain.pem
+        dest: /etc/nginx/ssl/chain.pem
+        owner: root
+        group: root
+        mode: 0644
+    - name: Import fullchain.pem into /etc/nginx/ssl
+      copy:
+        src: ssl/fullchain.pem
+        dest: /etc/nginx/ssl/fullchain.pem
+        owner: root
+        group: root
+        mode: 0644
+    - name: Import privkey.pem into /etc/nginx/ssl
+      copy:
+        src: ssl/privkey.pem
+        dest: /etc/nginx/ssl/privkey.pem
+        owner: root
+        group: root
+        mode: 0644
+    - name: Restart nginx
+      systemd:
+        name: nginx
+        state: restarted
