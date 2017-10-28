@@ -1,0 +1,64 @@
+---
+- hosts: web
+  become: true
+  tasks:
+    - name: PHP replace php.ini file
+      copy:
+        src: files/php.ini
+        dest: /etc/php.ini
+        owner: root
+        group: root
+        mode: 0644
+    - name: PHP replace www.conf file
+      copy:
+        src: files/www.conf
+        dest: /etc/php-fpm.d/www.conf
+        owner: root
+        group: root
+        mode: 0644
+      notify: restart php-fpm
+    - name: nginx create directory sites-available
+      file:
+        path: /etc/nginx/sites-available
+        state: directory
+        owner: root
+        group: root
+        mode: 0755
+    - name: nginx create directory sites-enabled
+      file:
+        path: /etc/nginx/sites-enabled
+        state: directory
+        owner: root
+        group: root
+        mode: 0755
+    - name: nginx replace nginx.conf file
+      copy:
+        src: files/nginx.conf
+        dest: /etc/nginx/nginx.conf
+        owner: root
+        group: root
+        mode: 0644
+    - name: nginx create opencart.conf file
+      copy:
+        src: files/opencart.conf
+        dest: /etc/nginx/sites-available/opencart.conf
+        owner: root
+        group: root
+        mode: 0644
+    - name: nginx create symbolic link to opencart.conf
+      file:
+        src: /etc/nginx/sites-available/opencart.conf
+        dest: /etc/nginx/sites-enabled/opencart.conf
+        owner: root
+        group: root
+        state: link
+      notify: restart nginx
+  handlers:
+    - name: restart php-fpm
+      systemd:
+        name: php-fpm
+        state: restarted
+    - name: restart nginx
+      systemd:
+        name: nginx
+        state: restarted

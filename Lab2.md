@@ -61,3 +61,11 @@ Issue#14
 # Creamos las llaves ssh de maquina1 y maquina2, y las agregamos al authorized_keys de cada una
 # Creamos la carpeta /etc/ansible/group_vars y el archivo /etc/ansible/group_vars/servers
 # Le decimos a ansible que siempre intente conectarse como usuario root, al modificar el archivo /etc/ansible/group_vars/servers
+# Ejecutamos "mkdir /root/ansible" para crear la carpeta donde guardaremos los playbooks
+# Creamos los playbooks y los ejecutamos con ansible-playbooks nombre-playbook
+
+Issue#15
+
+# Volvemos a hacer las tareas del lab1 en la nueva máquina, exceptuando lo relacionado a nginx
+
+Issue#17

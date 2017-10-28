@@ -1,0 +1,22 @@
+---
+- hosts: web
+  become: true
+  tasks:
+    - name: Add nginx repository
+      yum_repository:
+        name: nginx
+        description: nginx repo
+        baseurl: http://nginx.org/packages/centos/$releasever/$basearch/
+        gpgcheck: no
+        enabled: yes
+    - name: Install latest version of nginx
+      yum:
+        name: nginx
+        state: latest
+      notify: Start and enable nginx daemon
+  handlers:
+    - name: Start and enable nginx daemon
+      systemd:
+        name: nginx
+        state: started
+        enabled: yes

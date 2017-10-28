@@ -1,0 +1,31 @@
+---
+- hosts: web
+  become: true
+  tasks:
+    - name: Install epel repository
+      yum:
+        name: epel-release
+        state: latest
+    - name: Add ius repository
+      yum_repository:
+        name: ius
+        description: IUS Community Packages for Enterprise Linux 7 - $basearch
+        mirrorlist: https://mirrors.iuscommunity.org/mirrorlist?repo=ius-centos7&arch=$basearch&protocol=http
+        failovermethod: priority
+        enabled: yes
+        gpgcheck: yes
+        gpgkey: https://dl.iuscommunity.org/pub/ius/IUS-COMMUNITY-GPG-KEY
+    - name: Install php71u and php71u-fpm
+      yum:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+          - php71u
+          - php71u-fpm
+      notify: Start and enable php-fpm daemon
+  handlers:
+    - name: Start and enable php-fpm daemon
+      systemd:
+        name: php-fpm
+        state: started
+        enabled: yes
