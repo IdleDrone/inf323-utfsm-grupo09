@@ -16,7 +16,7 @@ Issue#10
 
 Issue#11
 
-# Copiamos /etc/nginx/sites-availables/test.conf en /etc/nginx/sites-availables/opencart.conf y procedemos a modificar:
+# Copiamos /etc/nginx/sites-available/test.conf en /etc/nginx/sites-available/opencart.conf y procedemos a modificar:
 ### Cambiamos el valor de root a /srv/www/opencart/html
 ### Agregamos index.php al parametro index
 ### Descomentamos el bloque de php (el de nginx) y modificamos el valor de fast_cgi por unix:/var/run/php-fpm/php-fpm.sock. También cambiamos el valor de "fastcgi_param SCRIPT_FILENAME" por "$document_root$fastcgi_script_name"
@@ -61,11 +61,10 @@ Issue#14
 # Creamos las llaves ssh de maquina1 y maquina2, y las agregamos al authorized_keys de cada una
 # Creamos la carpeta /etc/ansible/group_vars y el archivo /etc/ansible/group_vars/servers
 # Le decimos a ansible que siempre intente conectarse como usuario root, al modificar el archivo /etc/ansible/group_vars/servers
-# Ejecutamos "mkdir /root/ansible" para crear la carpeta donde guardaremos los playbooks
+# Ejecutamos "mkdir /root/ansible" para crear la carpeta donde guardaremos los playbooks y "mkdir /root/ansible/files" para crear la carpeta donde guardaremos los archivos de configuración
+# Copiamos los archivos "/etc/php.ini", "/etc/php-fpm.d/www.conf", "/etc/nginx/nginx.conf" y "/etc/nginx/sites-available/opencart.conf", y los pegamos en "/root/ansible/files/"
 # Creamos los playbooks y los ejecutamos con ansible-playbooks nombre-playbook
 
 Issue#15
 
 # Volvemos a hacer las tareas del lab1 en la nueva máquina, exceptuando lo relacionado a nginx
-
-Issue#17
