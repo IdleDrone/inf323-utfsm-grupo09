@@ -32,10 +32,10 @@
 ### Nos conectamos a mysql con "mysql -u root -p" y la contraseña que acabamos de conseguir
 ### Cambiamos la contraseña con "ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewSecurePassword*';"
 ### Creamos base de datos con "CREATE DATABASE opencart;"
+### Creamos usuario a la vez que le damos acceso a la base de datos con: "GRANT ALL ON opencart.* TO 'ocuser' IDENTIFIED BY 'MyNewSecurePassword*';"
 ### Ejecutamos "FLUSH PRIVILEGES;"
 ### Salimos con "exit"
 
-### Creamos usuario a la vez que le damos acceso a la base de datos con: "GRANT ALL ON opencart.* TO 'ocuser' IDENTIFIED BY 'MyNewSecurePassword*';"
 # Issue#13
 
 ### Instalamos unzip y wget con yum
@@ -49,12 +49,15 @@
 ### Instalamos la extensiones php71u-json, php71u-gd y php71u-mysqlnd
 ### Vamos a la página grupo09.mosorio.me y nos encontramos con el instalador de opencart. Le damos CONTINUE
 ### Revisamos que todos los tickets estén en verde y le damos a CONTINUE
-### Rellenamos los datos de acceso a la base de datos, como el username (ocuser) y el nombre de la base de datos (opencart). Creamos un usuario admin y le damos una contraseña y un correo. Luego le damos a CONTINUE.
+### Rellenamos los datos de acceso a la base de datos, como el username (ocuser) y el nombre de la base de datos (opencart). Creamos un usuario admin y le damos una contraseña y un correo. Luego le damos a CONTINUE
 ### Borramos la carpeta /srv/www/opencart/html/install y todos los archivos y subcarpetas dentro
+### [FIX] Cambiamos los permisos de las carpetas por 0750 y de los archivos por 0640
 
 # Issue#17
 
 ### Creamos la carpeta /etc/nginx/ssl y guardamos ahí los certificados descargados desde moodle
+### [FIX] Cambiamos los certificados de moodle por los creados por letsencrypt
+### [FIX] Guardamos los certificados con permisos 0640
 ### Modificamos /etc/nginx/sites-available/opencart.conf y le agregamos las direcciones de los certificados
 ### Reiniciamos nginx
 
@@ -75,3 +78,8 @@
 ### Volvemos a hacer las tareas del lab1 en la nueva máquina, exceptuando lo relacionado a nginx
 ### Ejecutamos los playbooks y cargamos las configuraciones correctas de php, nginx y tls
 ### Abrimos el puerto tcp 3306 en la zona public de ambas máquinas con el comando "firewall-cmd --zone=public --add-service=mysql --permanent"
+### [FIX] Quitamos el servicio mysql de la zona "public" con "firewall-cmd --zone=public --remove-service=mysql --permanent"
+### [FIX] Quitamos la interfaz eth0 de la zona "public" con "firewall-cmd --zone=public --remove-interface=eth0 --permanent"
+### [FIX] Asignamos la interfaz eth0 a la zona "internal" con "firewall-cmd --zone=internal --add-interface=eth0 --permanent"
+### [FIX] Agregamos el servicio mysql a la zona "internal" con "firewall-cmd --zone=internal --add-service=mysql --permanent"
+### [FIX] Recargamos firewalld con "firewall-cmd --reload"
