@@ -27,6 +27,7 @@
 ### En el Slave: nos conectamos al Master con "mysql --host=10.10.15.237 --user=rep --password=MyNewSlavePassword*" y revisamos que efectivamente tenemos permisos con "SHOW GRANTS;" dentro de mysql
 ### En el Slave:
 ##### Reiniciamos mysqld
+##### Abrimos el archivo /var/lib/mysql/xtrabackup_binlog_pos_innodb y guardamos la posición y el nombre del archivo que nos muestra
 ##### Ingresamos a mysql
-##### Ejecutamos "CHANGE MASTER TO MASTER_HOST='10.10.15.237', MASTER_USER='rep', MASTER_PASSWORD='MyNewSlavePassword*', MASTER_LOG_FILE='bin-000001', MASTER_LOG_POS=0;"
+##### Ejecutamos "CHANGE MASTER TO MASTER_HOST='10.10.15.237', MASTER_USER='rep', MASTER_PASSWORD='MyNewSlavePassword*', MASTER_LOG_FILE='bin.000001', MASTER_LOG_POS=1522;"
 ##### Iniciamos el Slave con "START SLAVE;"
