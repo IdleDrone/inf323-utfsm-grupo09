@@ -7,6 +7,7 @@
 ##### En la máquina 1 agregamos la línea "server-id=1" y en la máquina 2 agregamos la línea "server-id=2"
 ##### Agregamos la línea "log-bin=bin.log" en ambas máquinas
 ##### Agregamos la línea "log-bin-index=bin.index" en ambas maquinas
+##### [FIX] Quitamos las líneas "log-bin=bin.log" y "log-bin-index=bin.index" del slave
 ### Reiniciamos mysqld en ambas máquinas
 ### Instalamos "percona-xtrabackup-24" con yum en ambas máquinas
 ### Creamos la carpeta "/root/percona-backup" donde guardaremos el respaldo de la base de datos (en master)
@@ -45,9 +46,10 @@
 ##### Etapa 7: server name grupo09-m1 (grupo09-m2 para el Slave) y le damos a finalizar
 ### Detenemos mysqld
 ### Respaldamos /etc/percona-server.conf.d/mysqld.cnf en /etc/percona-server.conf.d/mysqld.cnf.bak
-### Copiamos el archivo generado por el wizard de percona, y lo guardamos en /etc/percona-server.conf.d/mysqld.cnf
+### Copiamos el archivo generado por el wizard de percona, y lo guardamo5.6s en /etc/percona-server.conf.d/mysqld.cnf
 ### Modificamos por última vez /etc/percona-server.conf.d/mysqld.cnf:
 ##### Comentamos las líneas "key-buffer-size=32M" y "myisam-recover=FORCE,BACKUP" porque usamos innodb en lugar de myisam
 ##### Agregamos la sección [client] y la información que añadimos en el issue #20
 ##### Añadimos la línea server-id=1, pues por alguna razón no apareció (server-id=2 para el Slave)
-##### Reiniciamos mysqld
+##### [FIX] Quitamos la línea "log-bin=/var/lib/mysql/mysql-bin" del slave
+### Reiniciamos mysqld
