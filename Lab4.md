@@ -135,3 +135,6 @@ location / {
 }
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 systemctl restart nginx
+
+Issue#23
+yum update because why not
