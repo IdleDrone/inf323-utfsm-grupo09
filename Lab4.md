@@ -92,6 +92,7 @@ Container Settings -> Volumes: /var/run/docker.sock:/var/run/docker.sock
 Save
 
 Issue#25
+Creamos certificado ssl con certbot certonly para jenkins
 Modificamos /etc/nginx/sites-available/jenkins.conf:
 Básicamente le metemos SSL y arreglamos el proxy provisorio. Queda así
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -109,7 +110,9 @@ server {
   listen 443 ssl http2;
   server_name jenkins.grupo09.mosorio.me;
 
-Blablabla SSL lo mismo de opencart.conf
+Blablabla SSL lo mismo de opencart.conf pero con 2 cambios:
+ssl_certificate /etc/letsencrypt/live/jenkins.grupo09.mosorio.me/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/jenkins.grupo09.mosorio.me/privkey.pem;
 
 location / {
     proxy_set_header        Host $host:$server_port;
