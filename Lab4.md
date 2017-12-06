@@ -73,13 +73,14 @@ Vamos a jenkins.grupo09.mosorio.me y seleccionamos Manage Jenkins -> Manage plug
 Install without restart
 Go back to the top page
 
+/* Esto creo que solo lo hice en el tutorial, y que es parte del issue 23 o 24
 Cofigurar los plugins
 Manage Jenkins -> Configure System -> Add a new Cloud -> Docker
 Aparece un nuevo apartado para docker, y lo rellenamos de información
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 Name: docker-agent
-Docker URL: ni idea
+Docker URL: vacío
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 Configurar imágen
@@ -89,7 +90,7 @@ label -> docker-agent
 Credentials -> username: jenkins, password: jenkins
 Select jenkins/*******
 Container Settings -> Volumes: /var/run/docker.sock:/var/run/docker.sock
-Save
+Save*/
 
 Issue#25
 Creamos certificado ssl con certbot certonly para jenkins
