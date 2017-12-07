@@ -47,4 +47,5 @@ ENV UWSGI_VIRTUALENV=/venv UWSGI_WSGI_FILE=mysite/wsgi.py UWSGI_HTTP=:8000 UWSGI
 RUN DATABASE_URL=none /venv/bin/python manage.py collectstatic --noinput
 
 # Start uWSGI
+ENTRYPOINT ["/code/docker-entrypoint.sh"]
 CMD ["/venv/bin/uwsgi", "--http-auto-chunked", "--http-keepalive"]
