@@ -139,3 +139,18 @@ systemctl restart nginx
 
 Issue#23
 yum update because why not
+yum install git
+agregar llaves a las deploy keys del repo
+
+en el repo:
+crear app de django
+crear Dockerfile y ponerle la info necesaria (obviamente), o sea, copiamos el template de https://www.caktusgroup.com/blog/2017/03/14/production-ready-dockerfile-your-python-django-app/ y le cambiamos los my_project por mysite
+creamos el archivo requirements.txt y le agregamos los módulos que requiere, como django por ejemplo
+creamos el archivo docker-entrypoint.sh y le ponemos el blabla
+le ponemos el entrypoint al dockerfile
+creamos el docker-compose y declaramos el postgres
+lo metemos en el Dockerfile
+Modificmos el settings.py
+
+en grupo09-m1:
+git clone git@github.com:IdleDrone/inf323-utfsm-grupo09.git
