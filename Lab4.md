@@ -74,6 +74,7 @@ Install without restart
 Go back to the top page
 
 /* Esto creo que solo lo hice en el tutorial, y que es parte del issue 23 o 24
+
 Cofigurar los plugins
 Manage Jenkins -> Configure System -> Add a new Cloud -> Docker
 Aparece un nuevo apartado para docker, y lo rellenamos de información
@@ -90,7 +91,9 @@ label -> docker-agent
 Credentials -> username: jenkins, password: jenkins
 Select jenkins/*******
 Container Settings -> Volumes: /var/run/docker.sock:/var/run/docker.sock
-Save*/
+Save
+
+*/
 
 Issue#25
 Creamos certificado ssl con certbot certonly para jenkins
@@ -154,3 +157,8 @@ Modificmos el settings.py
 
 en grupo09-m1:
 git clone git@github.com:IdleDrone/inf323-utfsm-grupo09.git
+cd inf323-utfsm-grupo09/mysite
+docker build -t my-app .
+docker login --username=idledrone --email=cristian.araya.125@gmail.com
+docker tag 77f7a3b4848d idledrone/mysite:first
+docker push idledrone/mysite:first
