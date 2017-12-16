@@ -2,7 +2,7 @@ Issue#21
 
 Instalar docker
 yum install docker
-systemctl start docker 
+systemctl start docker
 systemctl status docker
 systemctl enable docker
 
@@ -30,7 +30,7 @@ systemctl start docker
 
 Issue#22
 
-Descargar jenkins y crear el container
+Descargar jenkins y crear el container:
 docker pull jenkins
 docker run -d -u root --name jenkins -p 8080:8080 -v /root/jenkins:/var/jenkins_home:z -t jenkins
 firewall-cmd --permanent --zone=public --add-port=8080/tcp
@@ -144,3 +144,5 @@ docker push idledrone/mysite:first
 firewall-cmd --permanent --zone=internal --add-interface=docker0
 firewall-cmd --permanent --add-port=2376/tcp
 firewall-cmd --reload
+
+Issue#23 Denuevo desde 0
