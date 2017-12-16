@@ -24,7 +24,7 @@ reboot
 Cambiar storage driver
 usaremos overlay2 porque lo recomendó el profesor
 systemctl stop docker
-Modificamos /etc/docker/daemon.json y agregamos:  "storage-driver": "overlay" y "storage-opts": ["overlay2.override_kernel_check=true"]
+Modificamos /etc/docker/daemon.json y agregamos:  "storage-driver": "overlay2" y "storage-opts": ["overlay2.override_kernel_check=true"]
 systemctl start docker
 
 
