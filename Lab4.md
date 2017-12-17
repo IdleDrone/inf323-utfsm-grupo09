@@ -146,3 +146,9 @@ firewall-cmd --permanent --add-port=2376/tcp
 firewall-cmd --reload
 
 Issue#23 Denuevo desde 0
+
+curl -L https://github.com/docker/compose/releases/download/1.18.0-rc2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+creamos una carpeta de nombre grupo09app en el repo. Entramos con cd
+Siguiendo este tutorial: https://docs.docker.com/compose/django/ creamos el Dockerfile, requirements.txt y docker-compose.yml y los guardamos en la carpeta. en docker-compose.yml le agregamos ":Z" a la declaración del volúmen para no tener problemas con SELinux
+Ejecutamos "/usr/local/bin/docker-compose run web django-admin.py startproject grupo09app ."
