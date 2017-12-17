@@ -160,3 +160,5 @@ docker login --username=idledrone
 Buscamos el ID de grupo09app con "docker images"
 "docker tag e48e23d73856 idledrone/grupo09app:latest"
 "docker push idledrone/grupo09app"
+Luego en el server:
+docker pull idledrone/grupo09app:latest
