@@ -137,7 +137,7 @@ en grupo09-m1:
 git clone git@github.com:IdleDrone/inf323-utfsm-grupo09.git
 cd inf323-utfsm-grupo09/mysite
 docker build -t mysyte .
-docker login --username=idledrone --email=cristian.araya.125@gmail.com
+docker login --username=idledrone
 docker tag 77f7a3b4848d idledrone/mysite:first
 docker push idledrone/mysite:first
 
@@ -152,3 +152,11 @@ chmod +x /usr/local/bin/docker-compose
 creamos una carpeta de nombre grupo09app en el repo. Entramos con cd
 Siguiendo este tutorial: https://docs.docker.com/compose/django/ creamos el Dockerfile, requirements.txt y docker-compose.yml y los guardamos en la carpeta. en docker-compose.yml le agregamos ":Z" a la declaración del volúmen para no tener problemas con SELinux
 Ejecutamos "/usr/local/bin/docker-compose run web django-admin.py startproject grupo09app ."
+Editamos grupo09app/settings.py y reemplazamos la sección DATABASES
+Ejecutamos "/usr/local/bin/docker-compose up"
+Funciona bien, ahora vams a hacer denuevo el build pero ahora con docker build:
+docker login --username=idledrone
+"docker build -t grupo09app ."
+Buscamos el ID de grupo09app con "docker images"
+"docker tag e48e23d73856 idledrone/grupo09app:latest"
+"docker push idledrone/grupo09app"
