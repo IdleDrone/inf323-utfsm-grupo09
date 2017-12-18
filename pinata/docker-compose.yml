@@ -4,14 +4,14 @@ services:
     container_name: pinata_db
     image: postgres
     restart: always
-    environment: db_env
+    env_file: db_env
     expose:
       - "5432"
     ports:
       - "5432:5432"
   web:
     container_name: pinata_web
-    environment: web_env
+    env_file: web_env
     build:
       context: .
       dockerfile: ./Dockerfile
