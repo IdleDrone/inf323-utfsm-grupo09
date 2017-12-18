@@ -11,7 +11,7 @@ services:
       - env
     volumes:
       - ./web:/data/web
-    command: bash -c "./scripts/wait-for-it.sh postgres:5432 -t 20 -- python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "./scripts/wait-for-it.sh 0.0.0.0:5432 -t 20 -- python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
     depends_on:
