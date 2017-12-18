@@ -2,6 +2,7 @@ version: "2"
 services:
   web:
     container_name: web
+    restart: always
     build: ./web/
     expose:
       - "8000"
@@ -11,7 +12,7 @@ services:
       - env
     volumes:
       - ./web:/data/web
-    command: bash -c "./scripts/wait-for-it.sh postgres:5432 -t 20 -- python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "./scripts/wait-for-it.sh 0.0.0.0:5432 -t 20 -- python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
     depends_on:
@@ -19,6 +20,7 @@ services:
 
   postgres:
     container_name: postgres
+    restart: always
     image: postgres:latest
     volumes_from:
       - data
@@ -33,6 +35,7 @@ services:
       - "5432:5432"
 
   data:
+    restart: always
     image: alpine
     volumes:
       - /var/lib/pgsql
