@@ -179,3 +179,5 @@ Modificamos el settings.py
 Creamos el Dockerfile en web
 Ejecutamos "/usr/local/bin/docker-compose build"
 Ejecutamos "/usr/local/bin/docker-compose up -d"
+cp /root/inf323-utfsm-grupo09/newhope/nginx/django.conf /etc/nginx/sites-available/django.conf
+ln -s /etc/nginx/sites-enabled/django.conf (Y estaba creado así que no se hace)
