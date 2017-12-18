@@ -176,3 +176,5 @@ django-admin startproject web
 mv web2/requirements.txt web/requirements.txt
 rmdir web2
 Modificamos el settings.py
+Creamos el Dockerfile en web
+Ejecutamos "/usr/local/bin/docker-compose build"
