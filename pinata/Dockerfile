@@ -6,6 +6,7 @@ ADD requirements.txt /requirements.txt
 # Install build deps, then run `pip install`, then remove unneeded build deps all in a single step. Correct the path to your production requirements file, if needed.
 RUN set -ex \
   && apk add --no-cache --virtual .build-deps \
+    bash \
     gcc \
     make \
     libc-dev \
