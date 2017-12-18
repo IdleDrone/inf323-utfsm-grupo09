@@ -169,3 +169,5 @@ Seguiré esta guia https://www.capside.com/labs/deploying-full-django-stack-with
 Creamos las carpetas y el docker-compose, además del env
 Creamos docker-entrypoint-initdb.d/grupo09_web.sh y en él creamos el usuario y la base de datos
 Le damos permiso de ejecución
+Creamos el Dockerfile en la carpeta nginx
+Creamos nginx/sites-available/django.conf
