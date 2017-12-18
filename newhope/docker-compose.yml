@@ -16,17 +16,6 @@ services:
     ports:
       - "8000:8000"
 
-  nginx:
-    container_name: nginx
-    restart: always
-    build: ./nginx/
-    ports:
-      - "80:80"
-    volumes_from:
-      - web
-    links:
-      - web:web
-
   postgres:
     container_name: postgres
     restart: always
