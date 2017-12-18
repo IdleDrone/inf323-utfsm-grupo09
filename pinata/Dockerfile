@@ -24,7 +24,6 @@ RUN set -ex \
       | sort -u \
   )" \
   && apk add --virtual .python-rundeps $runDeps \
-  && apk del .build-deps \
   && apk add --no-cache --virtual .build-deps postgresql-client
 
 # Copy your application code to the container (make sure you create a .dockerignore file if any large files or directories should be excluded)
