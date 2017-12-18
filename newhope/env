@@ -1,0 +1,5 @@
+DB_NAME=grupo09_web
+DB_USER=grupo09_web
+DB_PASS=shoov3Phe*za?mahshjg5L2Tii4ohkah8k
+DB_SERVICE=postgres
+DB_PORT=5432

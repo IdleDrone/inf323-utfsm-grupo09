@@ -162,3 +162,7 @@ Buscamos el ID de grupo09app con "docker images"
 "docker push idledrone/grupo09app"
 Luego en el server:
 docker pull idledrone/grupo09app:latest
+
+Issue#23 AAAAAAAAAAAAAAA
+
+Seguiré esta guia https://www.capside.com/labs/deploying-full-django-stack-with-docker-compose/ y espero que esta vez funcione
