@@ -166,3 +166,6 @@ docker pull idledrone/grupo09app:latest
 Issue#23 AAAAAAAAAAAAAAA
 
 Seguiré esta guia https://www.capside.com/labs/deploying-full-django-stack-with-docker-compose/ y espero que esta vez funcione
+Creamos las carpetas y el docker-compose, además del env
+Creamos docker-entrypoint-initdb.d/grupo09_web.sh y en él creamos el usuario y la base de datos
+Le damos permiso de ejecución
