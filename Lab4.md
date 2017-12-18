@@ -171,3 +171,8 @@ Creamos docker-entrypoint-initdb.d/grupo09_web.sh y en él creamos el usuario y 
 Le damos permiso de ejecución
 Creamos el Dockerfile en la carpeta nginx
 Creamos nginx/sites-available/django.conf
+mv web web2
+django-admin startproject web
+mv web2/requirements.txt web/requirements.txt
+rmdir web2
+Modificamos el settings.py
