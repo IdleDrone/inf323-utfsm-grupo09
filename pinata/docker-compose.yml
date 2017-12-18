@@ -1,0 +1,21 @@
+version: '2'
+services:
+  db:
+    container_name: pinata_db
+    image: postgres
+    restart: always
+    environment: db_env
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+  web:
+    container_name: pinata_web
+    environment: web_env
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    links:
+      - db:db
+    ports:
+      - "8000:8000"

@@ -1,0 +1,3 @@
+POSTGRES_DB: pinata_db
+POSTGRES_USER: pinata
+POSTGRES_PASSWORD: pinata

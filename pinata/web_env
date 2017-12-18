@@ -1,0 +1,2 @@
+DATABASE_URL: postgres://pinata:pinata@db/pinata_db
+DJANGO_MANAGEPY_MIGRATE: "on"
