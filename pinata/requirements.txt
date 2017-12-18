@@ -1,4 +1,5 @@
 Django
 uwsgi
 psycopg2
-dj-database-url
+dj_database_url
+pytz
