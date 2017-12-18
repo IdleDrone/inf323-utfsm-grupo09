@@ -145,7 +145,7 @@ firewall-cmd --permanent --zone=internal --add-interface=docker0
 firewall-cmd --permanent --add-port=2376/tcp
 firewall-cmd --reload
 
-Issue#23 Denuevo desde 0
+Issue#23-24 Denuevo desde 0
 
 curl -L https://github.com/docker/compose/releases/download/1.18.0-rc2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
@@ -163,7 +163,7 @@ Buscamos el ID de grupo09app con "docker images"
 Luego en el server:
 docker pull idledrone/grupo09app:latest
 
-Issue#23 AAAAAAAAAAAAAAA
+Issue#23-24 AAAAAAAAAAAAAAA
 
 Seguiré esta guia https://www.capside.com/labs/deploying-full-django-stack-with-docker-compose/ y espero que esta vez funcione
 Creamos las carpetas y el docker-compose, además del env
@@ -183,4 +183,6 @@ cp /root/inf323-utfsm-grupo09/newhope/nginx/django.conf /etc/nginx/sites-availab
 ln -s /etc/nginx/sites-enabled/django.conf (Y estaba creado así que no se hace)
 
 
-Issue#23 (:sad)
+Issue#23-24 (:sad)
+
+Ya me cansé de pelear con docker. Ya que ya fué la evaluación del lab 4, y como el no tener una imagen funcionando de django me impide trabajar en el lab 5, descargué y construí una imagen que me servía (de otro grupo de la asiganatura). Funcionó, y ahora voy a comenzar a modificarlo para que se adapte a mis necesidades
