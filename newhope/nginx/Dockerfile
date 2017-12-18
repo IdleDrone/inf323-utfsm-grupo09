@@ -1,4 +1,4 @@
 FROM nginx:alpine
 
-ADD sites-available/django.conf /etc/nginx/sites-available/django.conf
-ADD sites-available/django.conf /etc/nginx/sites-enabled/django.conf
+RUN rm /etc/nginx/conf.d/default.conf
+ADD django.conf /etc/nginx/conf.d/django.conf
