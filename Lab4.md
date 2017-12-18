@@ -170,7 +170,7 @@ Creamos las carpetas y el docker-compose, además del env
 Creamos docker-entrypoint-initdb.d/grupo09_web.sh y en él creamos el usuario y la base de datos
 Le damos permiso de ejecución
 Creamos el Dockerfile en la carpeta nginx
-Creamos nginx/sites-available/django.conf
+Creamos nginx/django.conf
 mv web web2
 django-admin startproject web
 mv web2/requirements.txt web/requirements.txt
@@ -178,3 +178,4 @@ rmdir web2
 Modificamos el settings.py
 Creamos el Dockerfile en web
 Ejecutamos "/usr/local/bin/docker-compose build"
+Ejecutamos "/usr/local/bin/docker-compose up -d"
