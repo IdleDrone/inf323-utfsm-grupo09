@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: "Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    color: #333;
+    background: #fff;
+}
+
+h1, h2 {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 18px;
+    color: #666;
+    padding: 0 6px 0 0;
+    margin: 0 0 .2em 0;
+}
+
+h2 {
+    font-size: 16px;
+    margin: 1em 0 .5em 0;
+}
+
+img {
+    vertical-align: middle;
+}
