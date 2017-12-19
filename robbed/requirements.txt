@@ -2,3 +2,5 @@ Django==1.8.7
 uwsgi
 psycopg2
 dj-database-url
+boto3
+django-storages
