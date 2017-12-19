@@ -10,6 +10,7 @@ Agregamos la línea "AWS_S3_SECURE_URLS = False" para que s3 no use tls
 Guardamos y salimos
 En las máquinas agregamos el acesss_key_id y la secret_access_key
 Guardamos los static en S3 (si no están) e importamos los que estén allí con "python manage.py collectstatic" (basicamente, un sincronización)
+modificamos ranger para mostrar un html con una imágen, y así probar que s3 funciona
 
 Issue#27
 Issue#28
