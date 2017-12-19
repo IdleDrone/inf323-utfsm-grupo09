@@ -13,7 +13,7 @@ git commit y git push
 git pull en las máquinas
 En las máquinas agregamos el acesss_key_id y la secret_access_key
 Creamos nuevamente la imagen con docker compose up --build -d
-Dentro del container guardamos los static en S3 (si no están) e importamos los que estén allí con "python manage.py collectstatic" (basicamente, un sincronización)
+Al crearse el container, se ejecuta "python manage.py collectstatic --noinput" que sincroniza los statics con S3
 
 Issue#27
 Issue#28
