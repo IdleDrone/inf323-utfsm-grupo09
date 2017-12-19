@@ -8,9 +8,12 @@ Agregamos 'storages' a INSTALLED_APPS en mysite/settings.py
 Copiamos los comandos que definen el AWS_S3 y lo modificamos cin nuestras credenciales (el acesss_key_id y la secret_access_key) no lo anotamos en el repositorio, pero sí en las máquinas
 Agregamos la línea "AWS_S3_SECURE_URLS = False" para que s3 no use tls
 Guardamos y salimos
+Modificamos ranger para mostrar un html con una imágen, y así probar que s3 funciona
+git commit y git push
+git pull en las máquinas
 En las máquinas agregamos el acesss_key_id y la secret_access_key
-Guardamos los static en S3 (si no están) e importamos los que estén allí con "python manage.py collectstatic" (basicamente, un sincronización)
-modificamos ranger para mostrar un html con una imágen, y así probar que s3 funciona
+Creamos nuevamente la imagen con docker compose up --build -d
+Dentro del container guardamos los static en S3 (si no están) e importamos los que estén allí con "python manage.py collectstatic" (basicamente, un sincronización)
 
 Issue#27
 Issue#28

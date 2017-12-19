@@ -40,7 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'mysite',
     'ranger',
-    'storage',
+    'storages',
 )
 
 MIDDLEWARE_CLASSES = (
