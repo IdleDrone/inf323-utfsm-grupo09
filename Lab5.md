@@ -30,3 +30,9 @@ Todo funciona correctamente
 Creamos un superusuario dentro del contenedor que tiene django. Guardamos sus credenciales en /root/django-credenciales.txt (de la máquina, no del container)
 
 Issue#28
+
+En el nginx de la máquina 1, agregamos a la sección upstream la ip de la máquina 2, además del puerto 8000. Arriba de todo, aún en el upstream, va la línea "ip_hash;" que define que ese algoritmo se ocupe y no otro
+Al lado de los server ponemos los valores de configuración adicionales, para los parámetros max_fails, fail_timeout, y slow_start
+max_fails lo dejamos en 5 (intentos)
+fail_timeout lo dejamos en 10 (segundos)
+slow_start no se puede usar con ip_hash, así que no lo agregamos
